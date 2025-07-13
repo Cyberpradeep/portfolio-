@@ -120,7 +120,7 @@ const Hero = () => {
                 letterSpacing: 0.2,
               }}
             >
-              Full Stack Developer & ML Engineer
+              Full Stack Developer & ML Enthusiasts 
             </Typography>
             
             <Typography
