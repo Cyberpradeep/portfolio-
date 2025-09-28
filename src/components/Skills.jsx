@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Box,
   Typography,
-  Grid,
   Card,
   CardContent,
   Chip,
@@ -88,24 +87,33 @@ const Skills = ({ data }) => {
           </Typography>
         </Box>
         {/* Skills Categories as Cards with Chips */}
-        <Grid container spacing={4} alignItems="stretch" justifyContent="center" sx={{ maxWidth: 'md', mx: 'auto' }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gap: { xs: 3, md: 4 },
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            maxWidth: 'md',
+            mx: 'auto',
+          }}
+        >
           {skillCategories.map((category, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Card sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : 'rgba(255,255,255,0.95)',
-                border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)',
-                boxShadow: theme.palette.mode === 'dark'
-                  ? '0 8px 32px rgba(255,255,255,0.04), 0 0 20px rgba(255,255,255,0.08)'
-                  : '0 8px 32px rgba(0,0,0,0.08)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: 4,
-                p: 0,
-              }}>
-                <CardContent>
+            <Box key={index} sx={{ display: 'flex' }}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : 'rgba(255,255,255,0.95)',
+                  border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)',
+                  boxShadow: theme.palette.mode === 'dark'
+                    ? '0 8px 32px rgba(255,255,255,0.04), 0 0 20px rgba(255,255,255,0.08)'
+                    : '0 8px 32px rgba(0,0,0,0.08)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: 4,
+                  p: 0,
+                }}
+              >
+                <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', justifyContent: 'flex-start' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <Box
                       sx={{
@@ -153,9 +161,9 @@ const Skills = ({ data }) => {
                   </Box>
                 </CardContent>
               </Card>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
         {/* Skills Summary */}
         <Box sx={{ mt: 8, textAlign: 'center' }}>
           <Card sx={{ p: 4, background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(60,60,60,0.08) 100%)' : 'linear-gradient(135deg, rgba(200,200,200,0.05) 0%, rgba(255,255,255,0.05) 100%)' }}>

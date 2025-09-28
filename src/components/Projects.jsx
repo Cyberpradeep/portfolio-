@@ -5,7 +5,6 @@ import {
   Card,
   CardContent,
   CardActions,
-  Grid,
   Chip,
   Button,
   useTheme,
@@ -13,6 +12,7 @@ import {
 import {
   GitHub,
   Launch,
+  Star,
 } from '@mui/icons-material';
 
 const Projects = ({ data }) => {
@@ -66,44 +66,30 @@ const Projects = ({ data }) => {
         },
       }}
     >
-      {/* Featured Badge */}
-      {isFeatured && (
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 16,
-            right: 16,
-            zIndex: 1,
-          }}
-        >
+      <CardContent sx={{ flexGrow: 1, p: 3, display: 'flex', flexDirection: 'column', gap: 1 }}>
+        {isFeatured && (
           <Chip
             label="Featured"
             size="small"
+            icon={<Star sx={{ fontSize: 16 }} />}
             sx={{
-              backgroundColor: theme.palette.mode === 'dark'
-                ? 'rgba(255, 255, 255, 0.2)'
-                : 'rgba(0, 0, 0, 0.2)',
-              color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
-              border: theme.palette.mode === 'dark'
-                ? '1px solid rgba(255, 255, 255, 0.3)'
-                : '1px solid rgba(0, 0, 0, 0.3)',
+              alignSelf: 'flex-start',
               fontWeight: 600,
-              fontSize: '0.75rem',
-              boxShadow: theme.palette.mode === 'dark'
-                ? '0 0 15px rgba(255, 255, 255, 0.3)'
-                : '0 0 15px rgba(0, 0, 0, 0.3)',
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,215,0,0.3) 100%)'
+                : 'linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(184,134,11,0.18) 100%)',
+              color: theme.palette.mode === 'dark' ? '#fff' : '#1a1a1a',
+              borderRadius: 999,
+              px: 1.5,
             }}
           />
-        </Box>
-      )}
-
-      <CardContent sx={{ flexGrow: 1, p: 3 }}>
+        )}
         {/* Project Title */}
         <Typography
           variant="h5"
           sx={{
             fontWeight: 600,
-            mb: 1,
+            mt: isFeatured ? 0 : 0.5,
             color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
             textShadow: theme.palette.mode === 'dark'
               ? '0 0 10px rgba(255, 255, 255, 0.2)'
@@ -117,7 +103,7 @@ const Projects = ({ data }) => {
         <Typography
           variant="body2"
           sx={{
-            mb: 2,
+            mb: 1.5,
             color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040',
             lineHeight: 1.6,
             flexGrow: 1,
@@ -274,13 +260,19 @@ const Projects = ({ data }) => {
             >
               MERN Stack Projects
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Box
+              sx={{
+                display: 'grid',
+                gap: { xs: 3, md: 4 },
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              }}
+            >
               {mernProjects.map((project, index) => (
-                <Grid item xs={12} md={6} lg={4} key={project.id || index}>
+                <Box key={project.id || index} sx={{ display: 'flex' }}>
                   <ProjectCard project={project} index={index} isFeatured={index === 0} />
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
 
@@ -301,13 +293,19 @@ const Projects = ({ data }) => {
             >
               Machine Learning Projects
             </Typography>
-            <Grid container spacing={4} justifyContent="center">
+            <Box
+              sx={{
+                display: 'grid',
+                gap: { xs: 3, md: 4 },
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              }}
+            >
               {mlProjects.map((project, index) => (
-                <Grid item xs={12} md={6} lg={4} key={project.id || index}>
+                <Box key={project.id || index} sx={{ display: 'flex' }}>
                   <ProjectCard project={project} index={index} isFeatured={index === 0} />
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
         )}
       </Box>

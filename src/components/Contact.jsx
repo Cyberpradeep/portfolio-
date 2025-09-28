@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Box,
   Typography,
-  Grid,
   Card,
   CardContent,
   TextField,
@@ -15,7 +14,6 @@ import {
 import {
   Email,
   Phone,
-  LocationOn,
   Send,
   GitHub,
   LinkedIn,
@@ -162,39 +160,53 @@ const Contact = ({ data }) => {
           </Typography>
         </Box>
         {/* Top: Full-width Message Form */}
-        <Grid container spacing={4} sx={{ mb: 4 }} justifyContent="center" alignItems="center">
-          <Grid item xs={12}>
-            <Card sx={{ width: '100%', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <CardContent>
-                <Typography variant="h5" sx={{ fontWeight: 600, mb: 3, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Send Me a Message</Typography>
-                <Box component="form" onSubmit={handleSubmit}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <TextField fullWidth label="Your Name" name="name" value={formData.name} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <TextField fullWidth label="Your Email" name="email" type="email" value={formData.email} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <TextField fullWidth label="Subject" name="subject" value={formData.subject} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                      <TextField fullWidth label="Message" name="message" value={formData.message} onChange={handleInputChange} required multiline rows={1} variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Button type="submit" variant="contained" size="large" startIcon={<Send />} sx={{ px: 4, py: 1.5, fontSize: '1rem', fontWeight: 600, background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #404040 0%, #666666 100%)' : 'linear-gradient(135deg, #1a1a1a 0%, #404040 100%)', color: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff', '&:hover': { background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #666666 0%, #808080 100%)' : 'linear-gradient(135deg, #404040 0%, #666666 100%)', boxShadow: theme.palette.mode === 'dark' ? '0 0 20px rgba(255,255,255,0.3)' : '0 0 20px rgba(0,0,0,0.3)' }, transition: 'all 0.3s ease-in-out' }} disabled={loading}>Send Message</Button>
-                    </Grid>
-                  </Grid>
+        <Box sx={{ mb: 4 }}>
+          <Card sx={{ width: '100%', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <Typography variant="h5" sx={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Send Me a Message</Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}
+              >
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gap: { xs: 2, sm: 3 },
+                    gridTemplateColumns: {
+                      xs: '1fr',
+                      sm: 'repeat(2, minmax(0, 1fr))',
+                      lg: 'repeat(4, minmax(0, 1fr))',
+                    },
+                  }}
+                >
+                  <TextField fullWidth label="Your Name" name="name" value={formData.name} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
+                  <TextField fullWidth label="Your Email" name="email" type="email" value={formData.email} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
+                  <TextField fullWidth label="Subject" name="subject" value={formData.subject} onChange={handleInputChange} required variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' } }} />
+                  <TextField fullWidth label="Message" name="message" value={formData.message} onChange={handleInputChange} required multiline rows={4} variant="outlined" sx={{ '& .MuiOutlinedInput-root': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)', '&:hover fieldset': { borderColor: theme.palette.mode === 'dark' ? '#666666' : '#404040' }, '&.Mui-focused fieldset': { borderColor: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' } }, '& .MuiInputLabel-root': { color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }, gridColumn: { sm: 'span 2', lg: '1 / -1' } }} />
                 </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <Button type="submit" variant="contained" size="large" startIcon={<Send />} sx={{ px: 4, py: 1.5, fontSize: '1rem', fontWeight: 600, background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #404040 0%, #666666 100%)' : 'linear-gradient(135deg, #1a1a1a 0%, #404040 100%)', color: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff', '&:hover': { background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #666666 0%, #808080 100%)' : 'linear-gradient(135deg, #404040 0%, #666666 100%)', boxShadow: theme.palette.mode === 'dark' ? '0 0 20px rgba(255,255,255,0.3)' : '0 0 20px rgba(0,0,0,0.3)' }, transition: 'all 0.3s ease-in-out' }} disabled={loading}>Send Message</Button>
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
         {/* Bottom: 3-column row (Contact Info, Availability, Social Links) */}
-        <Grid container spacing={4} alignItems="stretch" justifyContent="center" sx={{ maxWidth: 'md', mx: 'auto' }}>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
-              <CardContent>
+        <Box
+          sx={{
+            display: 'grid',
+            gap: { xs: 3, md: 4 },
+            gridTemplateColumns: {
+              xs: '1fr',
+              md: 'repeat(3, minmax(0, 1fr))',
+            },
+            maxWidth: 'md',
+            mx: 'auto',
+          }}
+        >
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Contact Information</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {contactInfo.map((info, idx) => (
@@ -209,10 +221,8 @@ const Contact = ({ data }) => {
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
-              <CardContent>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Availability</Typography>
                 <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 1 }}>I'm currently available for:</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
@@ -223,20 +233,17 @@ const Contact = ({ data }) => {
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
-              <CardContent>
-                <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Social Links</Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'flex-end' }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Social Links</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                   {socialLinks.map((social, idx) => (
                     <IconButton key={idx} href={social.href} target="_blank" rel="noopener noreferrer" sx={{ width: 48, height: 48, backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.2)', '&:hover': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)', boxShadow: theme.palette.mode === 'dark' ? '0 0 10px rgba(255,255,255,0.2)' : '0 0 10px rgba(0,0,0,0.2)' } }}>{social.icon}</IconButton>
                   ))}
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
-        </Grid>
+        </Box>
         {/* Snackbar for feedback */}
         <Snackbar open={snackbar.open} autoHideDuration={5000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
           <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>

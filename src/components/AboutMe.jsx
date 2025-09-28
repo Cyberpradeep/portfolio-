@@ -64,7 +64,7 @@ const AboutMe = () => {
                 }}
               >
                 <Avatar
-                  src="/profile.jpg"
+                  src="/1054.jpg"
                   alt="Profile"
                   sx={{
                     width: 300,
@@ -152,115 +152,129 @@ const AboutMe = () => {
                   </Typography>
                 </Grow>
 
-                {/* Education Section */}
-                <Grow in={true} timeout={1600}>
-                  <Card
-                    sx={{
-                      mb: 3,
-                      background: theme.palette.paper,
-                      border: `1px solid ${theme.palette.border}`,
-                      borderRadius: 3,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
-                        boxShadow: isDark
-                          ? '0 10px 30px rgba(255, 215, 0, 0.2)'
-                          : '0 10px 30px rgba(0, 0, 0, 0.1)',
-                      },
-                    }}
-                  >
-                    <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <SchoolIcon
-                          sx={{
-                            color: theme.palette.primary.main,
-                            mr: 1,
-                            fontSize: 28,
-                          }}
-                        />
-                        <Typography variant="h5" fontWeight={600}>
-                          Education
-                        </Typography>
-                      </Box>
-                      {about.education.map((edu, index) => (
-                        <Box
-                          key={index}
-                          sx={{
-                            mb: index < about.education.length - 1 ? 2 : 0,
-                            p: 2,
-                            borderRadius: 2,
-                            background: isDark
-                              ? 'rgba(255, 215, 0, 0.05)'
-                              : 'rgba(184, 134, 11, 0.05)',
-                            border: `1px solid ${isDark ? 'rgba(255, 215, 0, 0.1)' : 'rgba(184, 134, 11, 0.1)'}`,
-                          }}
-                        >
-                          <Typography variant="h6" fontWeight={600} color="primary">
-                            {edu.degree}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {edu.school} • {edu.year}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            GPA: {edu.gpa}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </CardContent>
-                  </Card>
-                </Grow>
-
-                {/* Interests Section */}
-                <Grow in={true} timeout={1800}>
-                  <Card
-                    sx={{
-                      background: theme.palette.paper,
-                      border: `1px solid ${theme.palette.border}`,
-                      borderRadius: 3,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
-                        boxShadow: isDark
-                          ? '0 10px 30px rgba(255, 215, 0, 0.2)'
-                          : '0 10px 30px rgba(0, 0, 0, 0.1)',
-                      },
-                    }}
-                  >
-                    <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        <InterestsIcon
-                          sx={{
-                            color: theme.palette.primary.main,
-                            mr: 1,
-                            fontSize: 28,
-                          }}
-                        />
-                        <Typography variant="h5" fontWeight={600}>
-                          Interests & Passions
-                        </Typography>
-                      </Box>
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                        {about.interests.map((interest, index) => (
-                          <Chip
-                            key={index}
-                            label={interest}
-                            variant="filled"
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gap: { xs: 3, md: 4 },
+                    gridTemplateColumns: {
+                      xs: '1fr',
+                      md: 'repeat(2, minmax(0, 1fr))',
+                    },
+                    alignItems: 'stretch',
+                  }}
+                >
+                  <Grow in={true} timeout={1600}>
+                    <Card
+                      sx={{
+                        height: '100%',
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        transition: 'all 0.3s ease',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          boxShadow: isDark
+                            ? '0 10px 30px rgba(255, 215, 0, 0.2)'
+                            : '0 10px 30px rgba(0, 0, 0, 0.1)',
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <SchoolIcon
                             sx={{
-                              fontWeight: 500,
-                              transition: 'all 0.3s ease',
-                              '&:hover': {
-                                transform: 'scale(1.05)',
-                                boxShadow: isDark
-                                  ? '0 0 15px rgba(255, 215, 0, 0.3)'
-                                  : '0 0 10px rgba(184, 134, 11, 0.2)',
-                              },
+                              color: theme.palette.primary.main,
+                              fontSize: 28,
                             }}
                           />
-                        ))}
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grow>
+                          <Typography variant="h5" fontWeight={600}>
+                            Education
+                          </Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                          {about.education.map((edu, index) => (
+                            <Box
+                              key={index}
+                              sx={{
+                                p: 2,
+                                borderRadius: 2,
+                                background: isDark
+                                  ? 'rgba(255, 215, 0, 0.05)'
+                                  : 'rgba(184, 134, 11, 0.05)',
+                                border: `1px solid ${isDark ? 'rgba(255, 215, 0, 0.1)' : 'rgba(184, 134, 11, 0.1)'}`,
+                              }}
+                            >
+                              <Typography variant="h6" fontWeight={600} color="primary">
+                                {edu.degree}
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                {edu.school} • {edu.year}
+                              </Typography>
+                              <Typography variant="body2" color="text.secondary">
+                                GPA: {edu.gpa}
+                              </Typography>
+                            </Box>
+                          ))}
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  </Grow>
+
+                  <Grow in={true} timeout={1800}>
+                    <Card
+                      sx={{
+                        height: '100%',
+                        background: theme.palette.background.paper,
+                        border: `1px solid ${theme.palette.divider}`,
+                        borderRadius: 3,
+                        transition: 'all 0.3s ease',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          boxShadow: isDark
+                            ? '0 10px 30px rgba(255, 215, 0, 0.2)'
+                            : '0 10px 30px rgba(0, 0, 0, 0.1)',
+                        },
+                      }}
+                    >
+                      <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, flexGrow: 1 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <InterestsIcon
+                            sx={{
+                              color: theme.palette.primary.main,
+                              fontSize: 28,
+                            }}
+                          />
+                          <Typography variant="h5" fontWeight={600}>
+                            Interests & Passions
+                          </Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                          {about.interests.map((interest, index) => (
+                            <Chip
+                              key={index}
+                              label={interest}
+                              variant="filled"
+                              sx={{
+                                fontWeight: 500,
+                                transition: 'all 0.3s ease',
+                                '&:hover': {
+                                  transform: 'scale(1.05)',
+                                  boxShadow: isDark
+                                    ? '0 0 15px rgba(255, 215, 0, 0.3)'
+                                    : '0 0 10px rgba(184, 134, 11, 0.2)',
+                                },
+                              }}
+                            />
+                          ))}
+                        </Box>
+                      </CardContent>
+                    </Card>
+                  </Grow>
+                </Box>
               </Box>
             </Slide>
           </Grid>
