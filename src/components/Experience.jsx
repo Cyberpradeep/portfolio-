@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Grid, Card, CardContent, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, useTheme } from '@mui/material';
 
 const Experience = ({ data }) => {
   const theme = useTheme();
@@ -41,9 +41,15 @@ const Experience = ({ data }) => {
             Work Experience
           </Typography>
         </Box>
-        <Grid container spacing={4} justifyContent="center">
+        <Box
+          sx={{
+            display: 'grid',
+            gap: { xs: 3, md: 4 },
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          }}
+        >
           {experiences.map((exp, idx) => (
-            <Grid item xs={12} md={6} key={idx} display="flex" justifyContent="center">
+            <Box key={idx} sx={{ display: 'flex' }}>
               <Card
                 sx={{
                   height: '100%',
@@ -73,9 +79,9 @@ const Experience = ({ data }) => {
                   <Typography variant="body1" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>{exp.description}</Typography>
                 </CardContent>
               </Card>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Box>
     </Box>
   );

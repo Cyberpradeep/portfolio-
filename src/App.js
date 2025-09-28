@@ -1,5 +1,5 @@
 import React from 'react';
-import { CssBaseline, Box, Container } from '@mui/material';
+import { CssBaseline, Box } from '@mui/material';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import AppBar from './components/AppBar';
 import Hero from './components/Hero';
@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Hackathons from './components/Hackathons';
 import Education from './components/Education';
 import Certifications from './components/Certifications';
+import Resume from './components/Resume';
 import data from './data';
 
 function AppContent() {
@@ -44,6 +45,9 @@ function AppContent() {
 
           {/* Experience Section */}
           <Experience data={data} />
+
+          {/* Resume Section */}
+          <Resume data={data} />
 
           {/* Certifications Section */}
           <Certifications data={data} />

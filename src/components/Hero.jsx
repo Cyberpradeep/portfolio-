@@ -9,25 +9,31 @@ const Hero = () => {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          color: 0x404040,
-          backgroundColor: 0x000000,
-          points: 15.00,
-          maxDistance: 25.00,
-          spacing: 20.00
-        })
-      );
+    const isJsdom = typeof navigator !== 'undefined' && /jsdom/i.test(navigator.userAgent || '');
+
+    if (!vantaEffect && !isJsdom && vantaRef.current) {
+      try {
+        setVantaEffect(
+          NET({
+            el: vantaRef.current,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.0,
+            minWidth: 200.0,
+            scale: 1.0,
+            scaleMobile: 1.0,
+            color: 0x404040,
+            backgroundColor: 0x000000,
+            points: 15.0,
+            maxDistance: 25.0,
+            spacing: 20.0,
+          })
+        );
+      } catch (error) {
+        console.warn('Failed to initialize Vanta background:', error);
+      }
     }
 
     return () => {
@@ -120,7 +126,7 @@ const Hero = () => {
                 letterSpacing: 0.2,
               }}
             >
-              Full Stack Developer & ML Enthusiasts 
+              Computer Science & Cybersecurity Undergrad
             </Typography>
             
             <Typography
@@ -140,8 +146,7 @@ const Hero = () => {
                 fontWeight: 400,
               }}
             >
-              Passionate about creating innovative web applications and machine learning solutions. 
-              Specialized in MERN stack development and AI/ML technologies.
+              Computer Science & Cybersecurity undergrad (graduating 2027) with hands-on experience in Java and full-stack development. Finalist in MSME Ideathon 5.0 with strong foundations in software design, testing, and deployment. Skilled in Google Workspace, Firebase, and ML tools; passionate about building scalable solutions and contributing to collaborative teams.
             </Typography>
             
             <Box
@@ -156,7 +161,7 @@ const Hero = () => {
                 flexWrap: 'wrap',
               }}
             >
-              <a href="/Pradeep_Selladurai_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <a href="/Pradeep%20Selladurai%20--%20Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                 <Button
                   variant="contained"
                   size="large"
@@ -184,7 +189,7 @@ const Hero = () => {
                   View Resume
                 </Button>
               </a>
-              <a href="/Pradeep_Selladurai_Resume.pdf" download style={{ textDecoration: 'none' }}>
+              <a href="/Pradeep%20Selladurai%20--%20Resume.pdf" download style={{ textDecoration: 'none' }}>
                 <Button
                   variant="outlined"
                   size="large"

@@ -46,7 +46,7 @@ const SidebarContent = ({ isMobile, setOpen }) => {
       {/* Profile Section */}
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 2, mb: 3, width: '100%' }}>
         <Avatar
-          src="/profile.jpg"
+          src="/1054.jpg"
           alt="Profile"
           sx={{
             width: 64,

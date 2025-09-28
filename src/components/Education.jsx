@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, CardContent, Grid, Chip, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, Grid, useTheme } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 
 const Education = ({ data }) => {

@@ -3,15 +3,44 @@ const data = {
   about: {
     name: 'Pradeep S',
     title: 'MERN Stack & Machine Learning Developer',
-    intro: `Hey! I'm Pradeep, an engineering student currently pursuing my B.E. in Computer Science and Engineering (Cyber Security) at Muthayammal Engineering College, Namakkal. I specialize in full-stack web development using the MERN stack and also enjoy creating intelligent applications using machine learning.\n\nI’ve completed multiple internships focused on real-world applications like spam detection, digit recognition, garbage classification, and web apps for canteen preordering and fund management. My goal is to build impactful, scalable, and intelligent solutions that improve daily life and campus experiences.`,
+    intro: `Computer Science & Cybersecurity undergrad (graduating 2027) with hands-on experience in Java and full-stack development. Finalist in MSME Ideathon 5.0 with strong foundations in software design, testing, and deployment. Skilled in Google Workspace, Firebase, and ML tools; passionate about building scalable solutions and contributing to collaborative teams.`,
     additional: '',
+    education: [
+      {
+        degree: 'B.E. in Computer Science and Engineering (Cyber Security)',
+        school: 'Muthayammal Engineering College, Namakkal',
+        year: '2023 – 2027',
+        gpa: 'CGPA: 8.7/10 (current)',
+      },
+    ],
+    interests: [
+      'Artificial Intelligence & Applied Machine Learning',
+      'Full-stack product engineering',
+      'Cybersecurity innovations',
+      'Hackathons & rapid prototyping',
+      'Community-driven tech mentoring',
+    ],
+  },
+  social: {
+    github: 'https://github.com/Cyberpradeep',
+    linkedin: 'https://www.linkedin.com/in/pradeepselladurai',
+    leetcode: 'https://leetcode.com/u/pradeepcy/',
+    email: 'pradeepnaveen930@gmail.com',
+  },
+  resume: {
+    viewUrl: '/Pradeep%20Selladurai%20--%20Resume.pdf',
+    downloadUrl: '/Pradeep%20Selladurai%20--%20Resume.pdf',
+    lastUpdated: 'January 2025',
   },
   skills: {
-    languages: ['Java', 'C', 'SQL', 'Python3', 'JavaScript', 'Python'],
-    tools: ['Git', 'VS Code', 'Postman', 'MongoDB', 'MySQL Server', 'Jupyter Notebook', 'Google Colab'],
-    web: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'Material UI'],
-    ml: ['scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'TensorFlow', 'Keras', 'OpenCV'],
-    deployment: ['Netlify', 'Vercel', 'Firebase'],
+    languages: ['Java', 'Python', 'JavaScript', 'TypeScript', 'C', 'SQL'],
+    frontend: ['React.js', 'Material UI', 'Tailwind CSS', 'HTML5', 'CSS3'],
+    backend: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication', 'Firebase Functions'],
+    ml: ['TensorFlow', 'Keras', 'scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'OpenCV'],
+    tools: ['Git', 'GitHub', 'VS Code', 'Postman', 'Jupyter Notebook', 'Google Colab', 'Notion'],
+    deployment: ['Netlify', 'Vercel', 'Firebase', 'Render'],
+    databases: ['MongoDB', 'MySQL Server'],
+    web: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Material UI', 'Tailwind CSS', 'REST APIs', 'JWT Authentication'],
   },
   experience: [
     {
@@ -47,6 +76,13 @@ const data = {
   ],
   hackathons: [
     {
+      title: 'Finalist – MSME Ideathon 5.0',
+      date: 'July 2025',
+      description: 'Led the TalkToMachine vernacular AI assistant to help MSME operators interact in native languages, delivering 50% better accessibility through Hugging Face models and collaborative teamwork.',
+      tech: ['DistilBERT', 'Hugging Face', 'AI Assistant', 'Team Leadership'],
+      achievement: 'Advanced to the national finalist round with TalkToMachine',
+    },
+    {
       title: 'Participant – HackIndia 2025',
       date: 'March 2025',
       description: 'Built a MERN stack-based campus utility app focused on preordering food and managing college resources. Collaborated with a team to design, develop, and deploy the solution in under 36 hours.',
@@ -62,6 +98,20 @@ const data = {
     },
   ],
   projects: [
+    {
+      title: 'TalkToMachine – Vernacular AI Assistant',
+      description: 'AI assistant powered by DistilBERT and Hugging Face that helps MSME operators interact in native languages, improving accessibility by 50% and advancing to the MSME Ideathon 5.0 finalist round.',
+      technologies: ['Python', 'DistilBERT', 'Hugging Face', 'React.js', 'Node.js', 'Express.js'],
+      githubUrl: 'https://github.com/Cyberpradeep/TalkToMachine.git',
+      liveUrl: '',
+    },
+    {
+      title: 'Gemini-Powered AI Code Reviewer',
+      description: 'Automated code review platform that uses the Google Gemini API to deliver focused feedback, interactive chat, diff previews, and one-click fixes across multiple programming languages.',
+      technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Google Gemini API', 'Vercel'],
+      githubUrl: 'https://github.com/Cyberpradeep/Gemini-AI_Code_Reviewer',
+      liveUrl: 'https://www.aicodereviewer.dev',
+    },
     {
       title: 'Canteen Preorder App (MERN Stack)',
       description: 'A full-stack web app that allows students to preorder food before breaks to reduce waiting time.',
@@ -115,5 +165,7 @@ const data = {
     },
   ],
 };
+
+export const portfolioData = data;
 
 export default data; 

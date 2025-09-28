@@ -3,12 +3,15 @@ import { Box, Container, Typography, Button, Fade, Stack } from '@mui/material';
 import { Description as DescriptionIcon, Download as DownloadIcon, Launch as LaunchIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { useTheme as useCustomTheme } from '../contexts/ThemeContext';
-import { portfolioData } from '../data';
 
-const Resume = () => {
+const Resume = ({ data }) => {
   const theme = useTheme();
   const { isDark } = useCustomTheme();
-  const { resume } = portfolioData;
+  const resume = data?.resume;
+
+  if (!resume) {
+    return null;
+  }
 
   return (
     <Box
@@ -81,14 +84,16 @@ const Resume = () => {
             >
               Resume
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-              Download or view my latest resume. Last updated: <b>{resume.lastUpdated}</b>
-            </Typography>
+            {resume.lastUpdated && (
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                Download or view my latest resume. Last updated: <b>{resume.lastUpdated}</b>
+              </Typography>
+            )}
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" alignItems="center">
               <Button
                 variant="contained"
                 color="primary"
-                href={resume.downloadUrl}
+                href={resume.downloadUrl || resume.viewUrl}
                 download
                 startIcon={<DownloadIcon />}
                 sx={{
