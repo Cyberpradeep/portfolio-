@@ -46,14 +46,14 @@ function AppContent() {
           {/* Experience Section */}
           <Experience data={data} />
 
-          {/* Resume Section */}
-          <Resume data={data} />
-
           {/* Certifications Section */}
           <Certifications data={data} />
 
           {/* Hackathon Section */}
           <Hackathons data={data} />
+
+          {/* Resume Section */}
+          <Resume data={data} />
 
           {/* Contact Section */}
           <Contact data={data} />

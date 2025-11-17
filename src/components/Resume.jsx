@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Button, Fade, Stack } from '@mui/material';
-import { Description as DescriptionIcon, Download as DownloadIcon, Launch as LaunchIcon } from '@mui/icons-material';
+import { Description as DescriptionIcon, Download as DownloadIcon, Launch as LaunchIcon, Chat as ChatIcon } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { useTheme as useCustomTheme } from '../contexts/ThemeContext';
 
@@ -8,6 +8,20 @@ const Resume = ({ data }) => {
   const theme = useTheme();
   const { isDark } = useCustomTheme();
   const resume = data?.resume;
+  const stats = [
+    {
+      label: 'Projects Delivered',
+      value: `${data?.projects?.length || 0}+`,
+    },
+    {
+      label: 'Internships & Programs',
+      value: '2',
+    },
+    {
+      label: 'Certifications',
+      value: `${data?.certifications?.length || 0}`,
+    },
+  ];
 
   if (!resume) {
     return null;
@@ -89,6 +103,35 @@ const Resume = ({ data }) => {
                 Download or view my latest resume. Last updated: <b>{resume.lastUpdated}</b>
               </Typography>
             )}
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              sx={{ mb: 4 }}
+            >
+              {stats.map((stat) => (
+                <Box
+                  key={stat.label}
+                  sx={{
+                    px: 3,
+                    py: 2,
+                    borderRadius: 3,
+                    textAlign: 'center',
+                    background: isDark ? 'rgba(255, 215, 0, 0.08)' : 'rgba(184, 134, 11, 0.08)',
+                    border: `1px solid ${isDark ? 'rgba(255, 215, 0, 0.2)' : 'rgba(184, 134, 11, 0.2)'}`,
+                    minWidth: 150,
+                  }}
+                >
+                  <Typography variant="h5" fontWeight={700}>
+                    {stat.value}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {stat.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" alignItems="center">
               <Button
                 variant="contained"
@@ -120,6 +163,15 @@ const Resume = ({ data }) => {
                 }}
               >
                 View Online
+              </Button>
+              <Button
+                variant="text"
+                color="primary"
+                href="#contact"
+                startIcon={<ChatIcon />}
+                sx={{ fontWeight: 600 }}
+              >
+                Let’s Talk
               </Button>
             </Stack>
           </Box>

@@ -8,6 +8,8 @@ import {
   Chip,
   Avatar,
   useTheme,
+  Stack,
+  Divider,
 } from '@mui/material';
 import {
   Code,
@@ -44,6 +46,18 @@ const About = ({ data }) => {
       description: 'Git, Docker, AWS, and CI/CD pipelines',
       skills: data.skills?.tools || ['Git', 'Docker', 'AWS', 'CI/CD'],
     },
+  ];
+
+  const spotlight = [
+    'Building production-ready MERN apps with cohesive design systems.',
+    'Iterating on ML prototypes that support campus and MSME use cases.',
+    'Championing secure-by-default flows, from auth to deployment.',
+  ];
+
+  const quickStats = [
+    { label: 'Years shipping projects', value: '1.5 yrs' },
+    { label: 'Hackathon recognitions', value: `${data.hackathons?.length || 0}` },
+    { label: 'Internships & programs', value: '2' },
   ];
 
   return (
@@ -97,119 +111,93 @@ const About = ({ data }) => {
           </Typography>
         </Box>
 
-        {/* Expertise Areas Grid - 2x2 Layout */}
-        <Grid container spacing={4} justifyContent="center" sx={{ maxWidth: 'md', mx: 'auto' }}>
-          {expertiseAreas.map((area, index) => (
-            <Grid item xs={12} md={6} key={area.title}>
-              <Card
-                sx={{
-                  height: '100%',
-                  background: theme.palette.mode === 'dark'
-                    ? 'rgba(26, 26, 26, 0.9)'
-                    : 'rgba(255, 255, 255, 0.9)',
-                  border: theme.palette.mode === 'dark'
-                    ? '1px solid rgba(255, 255, 255, 0.1)'
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: theme.palette.mode === 'dark'
-                    ? '0 8px 32px rgba(255, 255, 255, 0.05), 0 0 20px rgba(255, 255, 255, 0.1)'
-                    : '0 8px 32px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: theme.palette.mode === 'dark'
-                      ? '0 16px 48px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.15)'
-                      : '0 16px 48px rgba(0, 0, 0, 0.15)',
-                    border: theme.palette.mode === 'dark'
-                      ? '1px solid rgba(255, 255, 255, 0.2)'
-                      : '1px solid rgba(0, 0, 0, 0.2)',
-                  },
-                }}
-              >
-                <CardContent sx={{ p: 3, textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  {/* Icon */}
-                  <Avatar
-                    sx={{
-                      width: 60,
-                      height: 60,
-                      mx: 'auto',
-                      mb: 2,
-                      background: theme.palette.mode === 'dark'
-                        ? 'linear-gradient(135deg, #404040 0%, #666666 100%)'
-                        : 'linear-gradient(135deg, #1a1a1a 0%, #404040 100%)',
-                      color: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
-                      fontSize: '1.5rem',
-                      boxShadow: theme.palette.mode === 'dark'
-                        ? '0 4px 20px rgba(255, 255, 255, 0.2)'
-                        : '0 4px 20px rgba(0, 0, 0, 0.2)',
-                    }}
-                  >
-                    {area.icon}
-                  </Avatar>
-
-                  {/* Title */}
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 600,
-                      mb: 1,
-                      color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
-                      textShadow: theme.palette.mode === 'dark'
-                        ? '0 0 10px rgba(255, 255, 255, 0.2)'
-                        : '0 0 10px rgba(0, 0, 0, 0.2)',
-                    }}
-                  >
-                    {area.title}
-                  </Typography>
-
-                  {/* Description */}
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      mb: 2,
-                      color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040',
-                      lineHeight: 1.6,
-                      flex: 1,
-                    }}
-                  >
-                    {area.description}
-                  </Typography>
-
-                  {/* Skills */}
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'center' }}>
-                    {area.skills.slice(0, 3).map((skill) => (
-                      <Chip
-                        key={skill}
-                        label={skill}
-                        size="small"
-                        sx={{
-                          backgroundColor: theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.1)'
-                            : 'rgba(0, 0, 0, 0.1)',
-                          color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
-                          border: theme.palette.mode === 'dark'
-                            ? '1px solid rgba(255, 255, 255, 0.2)'
-                            : '1px solid rgba(0, 0, 0, 0.2)',
-                          fontSize: '0.75rem',
-                          fontWeight: 500,
-                          '&:hover': {
-                            backgroundColor: theme.palette.mode === 'dark'
-                              ? 'rgba(255, 255, 255, 0.2)'
-                              : 'rgba(0, 0, 0, 0.2)',
-                            boxShadow: theme.palette.mode === 'dark'
-                              ? '0 0 10px rgba(255, 255, 255, 0.3)'
-                              : '0 0 10px rgba(0, 0, 0, 0.3)',
-                          },
-                          transition: 'all 0.3s ease-in-out',
-                        }}
-                      />
-                    ))}
+        <Grid
+          container
+          spacing={4}
+          justifyContent="center"
+          alignItems="stretch"
+          sx={{ mb: 6, maxWidth: 'lg', mx: 'auto' }}
+        >
+          <Grid item xs={12} md={7}>
+            <Card
+              sx={{
+                height: '100%',
+                p: 3,
+                background: theme.palette.mode === 'dark'
+                  ? 'rgba(20,20,20,0.92)'
+                  : 'rgba(255,255,255,0.95)',
+                border: theme.palette.mode === 'dark'
+                  ? '1px solid rgba(255,255,255,0.08)'
+                  : '1px solid rgba(0,0,0,0.08)',
+                boxShadow: '0 25px 45px rgba(0,0,0,0.25)',
+              }}
+            >
+              <Typography variant="overline" sx={{ letterSpacing: 2, color: theme.palette.text.secondary }}>
+                Spotlight
+              </Typography>
+              <Typography variant="h4" sx={{ fontWeight: 700, mb: 2 }}>
+                Turning ideas into reliable products
+              </Typography>
+              <Stack spacing={1.5}>
+                {spotlight.map((point) => (
+                  <Box key={point} sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
+                    <Box
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        backgroundColor: theme.palette.primary.main,
+                        mt: 0.9,
+                      }}
+                    />
+                    <Typography variant="body1" color="text.secondary">
+                      {point}
+                    </Typography>
                   </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+                ))}
+              </Stack>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={5}>
+            <Card
+              sx={{
+                height: '100%',
+                p: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,215,0,0.03))'
+                  : 'linear-gradient(135deg, rgba(184,134,11,0.12), rgba(184,134,11,0.03))',
+                border: theme.palette.mode === 'dark'
+                  ? '1px solid rgba(255,215,0,0.3)'
+                  : '1px solid rgba(184,134,11,0.3)',
+              }}
+            >
+              <Typography variant="overline" sx={{ letterSpacing: 2, color: theme.palette.text.secondary }}>
+                Quick snapshot
+              </Typography>
+              <Stack spacing={2}>
+                {quickStats.map((stat) => (
+                  <Box key={stat.label}>
+                    <Typography variant="h4" fontWeight={700}>
+                      {stat.value}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                ))}
+              </Stack>
+              <Divider sx={{ my: 2, opacity: 0.3 }} />
+              <Typography variant="body2" color="text.secondary">
+                Currently collaborating with student clubs and early-stage teams to ship useful tools faster.
+              </Typography>
+            </Card>
+          </Grid>
         </Grid>
+
+        {/* (Removed skills grid per request) */}
 
         {/* Additional Info */}
         {data.about?.additional && (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, CardContent, Grid, Chip, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, Grid, Chip, useTheme, Stack } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 const Hackathons = ({ data }) => {
@@ -47,35 +47,62 @@ const Hackathons = ({ data }) => {
             <Grid item xs={12} md={6} key={idx}>
               <Card
                 sx={{
+                  borderRadius: 4,
+                  overflow: 'hidden',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   background: theme.palette.mode === 'dark'
-                    ? 'rgba(26, 26, 26, 0.9)'
-                    : 'rgba(255, 255, 255, 0.9)',
+                    ? 'rgba(18,18,18,0.95)'
+                    : '#ffffff',
                   border: theme.palette.mode === 'dark'
-                    ? '1px solid rgba(255, 255, 255, 0.1)'
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)',
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 16px 48px rgba(255,255,255,0.1), 0 0 30px rgba(255,255,255,0.15)',
-                    border: theme.palette.mode === 'dark'
-                      ? '1px solid rgba(255,255,255,0.2)'
-                      : '1px solid rgba(0,0,0,0.2)',
-                  },
+                    ? '1px solid rgba(255,255,255,0.08)'
+                    : '1px solid rgba(0,0,0,0.08)',
+                  boxShadow: '0 18px 40px rgba(0,0,0,0.25)',
                 }}
               >
+                <Box
+                  sx={{
+                    height: 6,
+                    background: theme.palette.mode === 'dark'
+                      ? 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05))'
+                      : 'linear-gradient(135deg, rgba(0,0,0,0.15), rgba(0,0,0,0.05))',
+                  }}
+                />
                 <CardContent sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <EmojiEventsIcon sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mr: 1 }} />
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>{hack.title}</Typography>
-                  </Box>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 1 }}>
-                    {hack.date}
-                  </Typography>
+                  <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                    <Box
+                      sx={{
+                        width: 48,
+                        height: 48,
+                        borderRadius: '50%',
+                        backgroundColor: theme.palette.primary.main,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+                      }}
+                    >
+                      <EmojiEventsIcon />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>
+                        {hack.title}
+                      </Typography>
+                      <Chip
+                        label={hack.date}
+                        size="small"
+                        sx={{
+                          mt: 0.5,
+                          backgroundColor: theme.palette.mode === 'dark'
+                            ? 'rgba(255,255,255,0.08)'
+                            : 'rgba(0,0,0,0.08)',
+                          color: theme.palette.text.secondary,
+                          fontWeight: 600,
+                        }}
+                      />
+                    </Box>
+                  </Stack>
                   <Typography variant="body1" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 2, flex: 1 }}>
                     {hack.description}
                   </Typography>
@@ -87,19 +114,16 @@ const Hackathons = ({ data }) => {
                         size="small"
                         sx={{
                           backgroundColor: theme.palette.mode === 'dark'
-                            ? 'rgba(255,255,255,0.1)'
-                            : 'rgba(0,0,0,0.1)',
+                            ? 'rgba(255,255,255,0.08)'
+                            : 'rgba(0,0,0,0.06)',
                           color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
-                          border: theme.palette.mode === 'dark'
-                            ? '1px solid rgba(255,255,255,0.2)'
-                            : '1px solid rgba(0,0,0,0.2)',
-                          fontSize: '0.75rem',
+                          borderRadius: '999px',
                           fontWeight: 500,
                         }}
                       />
                     ))}
                   </Box>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a', fontWeight: 600 }}>
+                  <Typography variant="body2" sx={{ color: theme.palette.primary.main, fontWeight: 700 }}>
                     {hack.achievement}
                   </Typography>
                 </CardContent>

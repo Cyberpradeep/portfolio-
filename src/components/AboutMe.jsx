@@ -64,7 +64,7 @@ const AboutMe = () => {
                 }}
               >
                 <Avatar
-                  src="/1054.jpg"
+                  src="/profile.jpg"
                   alt="Profile"
                   sx={{
                     width: 300,

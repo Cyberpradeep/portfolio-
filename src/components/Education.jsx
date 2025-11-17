@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, CardContent, Grid, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, Grid, useTheme, Stack, Chip } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 
 const Education = ({ data }) => {
@@ -47,36 +47,67 @@ const Education = ({ data }) => {
             <Grid item xs={12} md={8} key={idx}>
               <Card
                 sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  borderRadius: 5,
                   background: theme.palette.mode === 'dark'
-                    ? 'rgba(26, 26, 26, 0.9)'
-                    : 'rgba(255, 255, 255, 0.9)',
+                    ? 'radial-gradient(circle at top, rgba(255,255,255,0.06), rgba(15,15,15,0.95))'
+                    : 'radial-gradient(circle at top, rgba(0,0,0,0.08), #ffffff)',
                   border: theme.palette.mode === 'dark'
-                    ? '1px solid rgba(255, 255, 255, 0.1)'
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)',
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 16px 48px rgba(255,255,255,0.1), 0 0 30px rgba(255,255,255,0.15)',
-                    border: theme.palette.mode === 'dark'
-                      ? '1px solid rgba(255,255,255,0.2)'
-                      : '1px solid rgba(0,0,0,0.2)',
-                  },
+                    ? '1px solid rgba(255,255,255,0.08)'
+                    : '1px solid rgba(0,0,0,0.08)',
+                  boxShadow: '0 25px 60px rgba(0,0,0,0.35)',
+                  backdropFilter: 'blur(12px)',
                 }}
               >
-                <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <SchoolIcon sx={{ fontSize: 48, color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 2 }} />
-                  <Typography variant="h5" sx={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a', mb: 1 }}>{edu.degree}</Typography>
-                  <Typography variant="body1" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 1 }}>{edu.college}</Typography>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 2 }}>{edu.year}</Typography>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%', alignItems: 'center', mt: 1 }}>
+                <CardContent sx={{ p: { xs: 3, md: 5 } }}>
+                  <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} alignItems="center" justifyContent="space-between">
+                    <Box sx={{
+                      width: 72,
+                      height: 72,
+                      borderRadius: '50%',
+                      backgroundColor: theme.palette.primary.main,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 15px 30px rgba(0,0,0,0.25)',
+                    }}>
+                      <SchoolIcon sx={{ fontSize: 36, color: '#000' }} />
+                    </Box>
+                    <Box textAlign={{ xs: 'center', md: 'left' }} flex={1}>
+                      <Typography variant="overline" sx={{ letterSpacing: 2, color: theme.palette.text.secondary }}>
+                        Undergrad Program
+                      </Typography>
+                      <Typography variant="h5" sx={{ fontWeight: 700, color: theme.palette.mode === 'dark' ? '#fff' : '#111', mb: 1 }}>
+                        {edu.degree}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: theme.palette.text.secondary }}>
+                        {edu.college}
+                      </Typography>
+                    </Box>
+                    <Chip
+                      label={edu.year}
+                      sx={{
+                        borderRadius: 999,
+                        fontWeight: 600,
+                        backgroundColor: theme.palette.mode === 'dark'
+                          ? 'rgba(255,255,255,0.12)'
+                          : 'rgba(0,0,0,0.08)',
+                      }}
+                    />
+                  </Stack>
+                  <Box sx={{ mt: 4, pl: { xs: 1, md: 3 }, borderLeft: theme.palette.mode === 'dark' ? '2px solid rgba(255,255,255,0.1)' : '2px solid rgba(0,0,0,0.1)' }}>
                     {edu.highlights.map((h, i) => (
-                      <Typography key={i} variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', textAlign: 'center', pl: 0, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', m: 0 }}>
-                        <span style={{ marginRight: 8, fontWeight: 'bold', fontSize: '1.1em', display: 'inline-block' }}>•</span> {h}
+                      <Typography
+                        key={i}
+                        variant="body1"
+                        sx={{
+                          color: theme.palette.mode === 'dark' ? '#dcdcdc' : '#333',
+                          mb: 1.5,
+                          position: 'relative',
+                        }}
+                      >
+                        {h}
                       </Typography>
                     ))}
                   </Box>

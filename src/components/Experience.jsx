@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography, Card, CardContent, useTheme } from '@mui/material';
+import { Box, Typography, Card, CardContent, useTheme, Stack, Chip } from '@mui/material';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 const Experience = ({ data }) => {
   const theme = useTheme();
@@ -41,46 +42,95 @@ const Experience = ({ data }) => {
             Work Experience
           </Typography>
         </Box>
-        <Box
-          sx={{
-            display: 'grid',
-            gap: { xs: 3, md: 4 },
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          }}
-        >
-          {experiences.map((exp, idx) => (
-            <Box key={idx} sx={{ display: 'flex' }}>
-              <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: theme.palette.mode === 'dark'
-                    ? 'rgba(26, 26, 26, 0.9)'
-                    : 'rgba(255, 255, 255, 0.9)',
-                  border: theme.palette.mode === 'dark'
-                    ? '1px solid rgba(255, 255, 255, 0.1)'
-                    : '1px solid rgba(0, 0, 0, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.05), 0 0 20px rgba(255, 255, 255, 0.1)',
-                  transition: 'all 0.3s ease-in-out',
-                  position: 'relative',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 16px 48px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.2)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                  },
-                }}
-              >
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 1, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>{exp.title}</Typography>
-                  <Typography variant="subtitle1" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 1 }}>{exp.company}</Typography>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 2 }}>{exp.period}</Typography>
-                  <Typography variant="body1" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>{exp.description}</Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          ))}
+        <Box sx={{ position: 'relative', px: { xs: 0, md: 4 } }}>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              left: { xs: 24, md: '50%' },
+              width: 2,
+              bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)',
+              transform: { md: 'translateX(-50%)' },
+              display: { xs: 'none', md: 'block' },
+            }}
+          />
+          <Stack spacing={4}>
+            {experiences.map((exp, idx) => {
+              const isLeft = idx % 2 === 0;
+              return (
+                <Box
+                  key={idx}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: { xs: 'flex-start', md: isLeft ? 'flex-end' : 'flex-start' },
+                    position: 'relative',
+                    pt: 1,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      left: { xs: 0, md: '50%' },
+                      transform: { xs: 'none', md: 'translateX(-50%)' },
+                      width: 48,
+                      height: 48,
+                      borderRadius: '50%',
+                      bgcolor: theme.palette.primary.main,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#000',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
+                    }}
+                  >
+                    <WorkOutlineIcon />
+                  </Box>
+                  <Card
+                    sx={{
+                      width: { xs: '100%', md: '45%' },
+                      ml: { xs: 0, md: isLeft ? 0 : 6 },
+                      mr: { xs: 0, md: isLeft ? 6 : 0 },
+                      mt: { xs: 0, md: 2 },
+                      borderRadius: 4,
+                      background: theme.palette.mode === 'dark'
+                        ? 'rgba(26, 26, 26, 0.95)'
+                        : 'rgba(255, 255, 255, 0.98)',
+                      border: theme.palette.mode === 'dark'
+                        ? '1px solid rgba(255, 255, 255, 0.1)'
+                        : '1px solid rgba(0, 0, 0, 0.08)',
+                      boxShadow: '0 12px 32px rgba(0,0,0,0.25)',
+                    }}
+                  >
+                    <CardContent sx={{ p: 4 }}>
+                      <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                        <Chip
+                          label={exp.period}
+                          size="small"
+                          sx={{
+                            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
+                            color: theme.palette.text.primary,
+                            fontWeight: 600,
+                            textTransform: 'uppercase',
+                            letterSpacing: 0.6,
+                          }}
+                        />
+                        <Typography variant="subtitle2" color="text.secondary">
+                          {exp.company}
+                        </Typography>
+                      </Stack>
+                      <Typography variant="h5" fontWeight={700} sx={{ mb: 1, color: theme.palette.text.primary }}>
+                        {exp.title}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                        {exp.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Box>
+              );
+            })}
+          </Stack>
         </Box>
       </Box>
     </Box>

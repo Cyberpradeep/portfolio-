@@ -8,6 +8,8 @@ import {
   Chip,
   Button,
   useTheme,
+  Stack,
+  Avatar,
 } from '@mui/material';
 import {
   GitHub,
@@ -40,32 +42,26 @@ const Projects = ({ data }) => {
         display: 'flex',
         flexDirection: 'column',
         background: theme.palette.mode === 'dark'
-          ? 'rgba(26, 26, 26, 0.9)'
-          : 'rgba(255, 255, 255, 0.9)',
+          ? 'rgba(18, 18, 18, 0.9)'
+          : '#ffffff',
+        borderRadius: 5,
         border: theme.palette.mode === 'dark'
-          ? '1px solid rgba(255, 255, 255, 0.1)'
-          : '1px solid rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(10px)',
-        boxShadow: isFeatured 
-          ? (theme.palette.mode === 'dark'
-              ? '0 8px 32px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.2)'
-              : '0 8px 32px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 0, 0, 0.2)')
-          : (theme.palette.mode === 'dark'
-              ? '0 8px 32px rgba(255, 255, 255, 0.05), 0 0 20px rgba(255, 255, 255, 0.1)'
-              : '0 8px 32px rgba(0, 0, 0, 0.1)'),
-        transition: 'all 0.3s ease-in-out',
+          ? '1px solid rgba(255, 255, 255, 0.08)'
+          : '1px solid rgba(0, 0, 0, 0.08)',
+        boxShadow: isFeatured
+          ? '0 20px 45px rgba(0, 0, 0, 0.35)'
+          : '0 10px 30px rgba(0, 0, 0, 0.15)',
+        overflow: 'hidden',
         position: 'relative',
-        '&:hover': {
-          transform: 'translateY(-8px)',
-          boxShadow: theme.palette.mode === 'dark'
-            ? '0 16px 48px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.2)'
-            : '0 16px 48px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.25)',
-          border: theme.palette.mode === 'dark'
-            ? '1px solid rgba(255, 255, 255, 0.2)'
-            : '1px solid rgba(0, 0, 0, 0.2)',
-        },
       }}
     >
+      <Box
+        sx={{
+          height: 6,
+          bgcolor: isFeatured ? theme.palette.primary.main : theme.palette.primary.light,
+          boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+        }}
+      />
       <CardContent sx={{ flexGrow: 1, p: 3, display: 'flex', flexDirection: 'column', gap: 1 }}>
         {isFeatured && (
           <Chip
@@ -84,33 +80,77 @@ const Projects = ({ data }) => {
             }}
           />
         )}
+        <Stack direction="row" spacing={2} alignItems="center" mt={1}>
+          <Avatar
+            sx={{
+              bgcolor: theme.palette.primary.main,
+              width: 48,
+              height: 48,
+              fontWeight: 700,
+            }}
+          >
+            {project.title?.[0] || '?'}
+          </Avatar>
+          <Box>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 600,
+                color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
+                textShadow: theme.palette.mode === 'dark'
+                  ? '0 0 10px rgba(255, 255, 255, 0.2)'
+                  : '0 0 10px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              {project.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {project.technologies?.slice(0, 2).join(' • ')}
+            </Typography>
+          </Box>
+        </Stack>
         {/* Project Title */}
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: 600,
-            mt: isFeatured ? 0 : 0.5,
-            color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
-            textShadow: theme.palette.mode === 'dark'
-              ? '0 0 10px rgba(255, 255, 255, 0.2)'
-              : '0 0 10px rgba(0, 0, 0, 0.2)',
-          }}
-        >
-          {project.title}
-        </Typography>
-
-        {/* Project Description */}
         <Typography
           variant="body2"
           sx={{
-            mb: 1.5,
             color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040',
             lineHeight: 1.6,
-            flexGrow: 1,
+            mt: 1,
           }}
         >
           {project.description}
         </Typography>
+
+        {/* Impact Highlights */}
+        {project.impact?.length > 0 && (
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="subtitle2" sx={{ color: theme.palette.primary.main, mb: 1, fontWeight: 600 }}>
+              Impact
+            </Typography>
+            <Box
+              component="ul"
+              sx={{
+                pl: 2.5,
+                mb: 1.5,
+                color: theme.palette.mode === 'dark' ? '#e0e0e0' : '#333333',
+              }}
+            >
+              {project.impact.map((item, idx) => (
+                <Typography
+                  key={idx}
+                  component="li"
+                  variant="body2"
+                  sx={{
+                    lineHeight: 1.5,
+                    mb: 0.5,
+                  }}
+                >
+                  {item}
+                </Typography>
+              ))}
+            </Box>
+          </Box>
+        )}
 
         {/* Technologies */}
         <Box sx={{ mb: 2 }}>

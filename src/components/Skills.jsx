@@ -6,52 +6,58 @@ import {
   CardContent,
   Chip,
   useTheme,
+  Stack,
 } from '@mui/material';
 import {
   Brush,
   Storage,
   Psychology,
   Build,
+  Cloud,
+  ElectricBolt,
 } from '@mui/icons-material';
 
 const Skills = ({ data }) => {
   const theme = useTheme();
+  const learningFocus = ['System Design', 'Prompt Engineering', 'DevOps', 'Distributed ML', 'UI Motion'];
 
   // Define skill categories and icons
   const skillCategories = [
     {
       title: 'Frontend Development',
       icon: <Brush />,
-      skills: data.skills?.web?.filter(skill => [
-        'React.js', 'Material UI', 'Bootstrap', 'HTML5', 'CSS3', 'JavaScript', 'TypeScript'
-      ].includes(skill) || skill.toLowerCase().includes('react') || skill.toLowerCase().includes('material')) || [],
+      skills: data.skills?.frontend || [],
+      gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)',
     },
     {
-      title: 'Backend Development',
+      title: 'Backend & Databases',
       icon: <Storage />,
-      skills: data.skills?.web?.filter(skill => [
-        'Node.js', 'Express.js', 'MongoDB', 'MySQL Server', 'RESTful APIs', 'JWT', 'Role-Based Authorization'
-      ].includes(skill) || skill.toLowerCase().includes('node') || skill.toLowerCase().includes('express') || skill.toLowerCase().includes('mongo')) || [],
+      skills: data.skills?.backend || [],
+      gradient: 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
     },
     {
       title: 'Machine Learning',
       icon: <Psychology />,
       skills: data.skills?.ml || [],
+      gradient: 'linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)',
     },
     {
       title: 'Programming Languages',
       icon: <Build />,
       skills: data.skills?.languages || [],
+      gradient: 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)',
     },
     {
       title: 'Tools & Platforms',
-      icon: <Build />,
+      icon: <ElectricBolt />,
       skills: data.skills?.tools || [],
+      gradient: 'linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%)',
     },
     {
-      title: 'Deployment',
-      icon: <Build />,
+      title: 'Deployment & Cloud',
+      icon: <Cloud />,
       skills: data.skills?.deployment || [],
+      gradient: 'linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)',
     },
   ];
 
@@ -91,8 +97,8 @@ const Skills = ({ data }) => {
           sx={{
             display: 'grid',
             gap: { xs: 3, md: 4 },
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            maxWidth: 'md',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            maxWidth: 'lg',
             mx: 'auto',
           }}
         >
@@ -103,16 +109,19 @@ const Skills = ({ data }) => {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : 'rgba(255,255,255,0.95)',
-                  border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)',
-                  boxShadow: theme.palette.mode === 'dark'
-                    ? '0 8px 32px rgba(255,255,255,0.04), 0 0 20px rgba(255,255,255,0.08)'
-                    : '0 8px 32px rgba(0,0,0,0.08)',
-                  backdropFilter: 'blur(10px)',
+                  background: theme.palette.mode === 'dark' ? 'rgba(20,20,20,0.95)' : '#ffffff',
                   borderRadius: 4,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.18)',
                   p: 0,
                 }}
               >
+                <Box
+                  sx={{
+                    height: 6,
+                    background: category.gradient,
+                  }}
+                />
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%', justifyContent: 'flex-start' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                     <Box
@@ -120,10 +129,10 @@ const Skills = ({ data }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: 40,
-                        height: 40,
+                        width: 48,
+                        height: 48,
                         borderRadius: '50%',
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)',
+                        background: category.gradient,
                         color: theme.palette.mode === 'dark' ? '#fff' : '#232323',
                         mr: 2,
                       }}
@@ -142,18 +151,19 @@ const Skills = ({ data }) => {
                         sx={{
                           background: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.04)',
                           color: theme.palette.mode === 'dark' ? '#fff' : '#232323',
-                          fontWeight: 500,
-                          fontSize: '1rem',
+                          fontWeight: 600,
+                          fontSize: '0.95rem',
                           px: 2,
                           py: 0.5,
-                          border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(0,0,0,0.12)',
-                          boxShadow: theme.palette.mode === 'dark' ? '0 0 8px 0 #2228' : '0 0 8px 0 #bbb4',
+                          borderRadius: 999,
+                          border: 'none',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
                           letterSpacing: 0.5,
                           transition: 'all 0.2s',
                           '&:hover': {
-                            background: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.08)',
-                            color: theme.palette.mode === 'dark' ? '#232323' : '#fff',
-                            transform: 'scale(1.07)',
+                            background: theme.palette.primary.main,
+                            color: '#fff',
+                            transform: 'translateY(-2px)',
                           },
                         }}
                       />
@@ -165,15 +175,59 @@ const Skills = ({ data }) => {
           ))}
         </Box>
         {/* Skills Summary */}
-        <Box sx={{ mt: 8, textAlign: 'center' }}>
-          <Card sx={{ p: 4, background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(60,60,60,0.08) 100%)' : 'linear-gradient(135deg, rgba(200,200,200,0.05) 0%, rgba(255,255,255,0.05) 100%)' }}>
-            <Typography variant="h5" fontWeight="600" sx={{ color: theme.palette.mode === 'dark' ? '#fff' : '#232323', mb: 2 }}>
-              Continuous Learning
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: '800px', mx: 'auto', lineHeight: 1.7 }}>
-              I'm constantly expanding my skill set and staying up-to-date with the latest technologies and best practices. 
-              My passion for learning drives me to explore new frameworks, tools, and methodologies to deliver better solutions.
-            </Typography>
+        <Box sx={{ mt: 8 }}>
+          <Card
+            sx={{
+              p: 4,
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))'
+                : 'linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.01))',
+              border: theme.palette.mode === 'dark'
+                ? '1px solid rgba(255,255,255,0.15)'
+                : '1px solid rgba(0,0,0,0.08)',
+              boxShadow: '0 20px 45px rgba(0,0,0,0.15)',
+            }}
+          >
+            <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} alignItems="center">
+              <Box flex={1} textAlign="left">
+                <Typography variant="overline" sx={{ letterSpacing: 2, color: theme.palette.text.secondary }}>
+                  Continuous Learning
+                </Typography>
+                <Typography variant="h4" fontWeight={700} sx={{ mb: 2 }}>
+                  Always experimenting & improving
+                </Typography>
+                <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                  Weekly build logs, reading sprints, and mini-labs help me stay sharp across system design,
+                  ML research, and developer experience. I love translating that curiosity into better
+                  experiences for users and collaborators.
+                </Typography>
+              </Box>
+              <Box
+                flex={1}
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: 1,
+                  justifyContent: { xs: 'flex-start', md: 'flex-end' },
+                }}
+              >
+                {learningFocus.map((topic) => (
+                  <Chip
+                    key={topic}
+                    label={topic}
+                    sx={{
+                      px: 2,
+                      py: 1,
+                      borderRadius: 999,
+                      fontWeight: 600,
+                      background: theme.palette.mode === 'dark'
+                        ? 'rgba(255,255,255,0.12)'
+                        : 'rgba(0,0,0,0.08)',
+                    }}
+                  />
+                ))}
+              </Box>
+            </Stack>
           </Card>
         </Box>
       </Box>

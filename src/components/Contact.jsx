@@ -7,9 +7,11 @@ import {
   TextField,
   Button,
   IconButton,
+  Chip,
   useTheme,
   Snackbar,
   Alert,
+  Stack,
 } from '@mui/material';
 import {
   Email,
@@ -159,6 +161,51 @@ const Contact = ({ data }) => {
             Contact Me
           </Typography>
         </Box>
+        {/* Quick CTA Row */}
+        <Box sx={{ mb: 4, textAlign: 'center' }}>
+          <Typography variant="h6" sx={{ mb: 2, color: theme.palette.mode === 'dark' ? '#f5f5f5' : '#232323' }}>
+            Prefer a quick chat?
+          </Typography>
+          <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
+            <Button
+              variant="contained"
+              startIcon={<Email />}
+              href="mailto:pradeepnaveen930@gmail.com"
+              sx={{
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(135deg, #404040 0%, #666666 100%)'
+                  : 'linear-gradient(135deg, #1a1a1a 0%, #404040 100%)',
+                color: '#fff',
+                px: 3,
+                py: 1.2,
+                borderRadius: 3,
+              }}
+            >
+              Email Me
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<LinkedIn />}
+              href="https://www.linkedin.com/in/pradeepselladurai"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                px: 3,
+                py: 1.2,
+                borderRadius: 3,
+                borderColor: theme.palette.primary.main,
+                color: theme.palette.primary.main,
+                '&:hover': {
+                  borderColor: theme.palette.primary.main,
+                  backgroundColor: theme.palette.primary.main,
+                  color: '#000',
+                },
+              }}
+            >
+              Connect on LinkedIn
+            </Button>
+          </Stack>
+        </Box>
         {/* Top: Full-width Message Form */}
         <Box sx={{ mb: 4 }}>
           <Card sx={{ width: '100%', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -205,7 +252,8 @@ const Contact = ({ data }) => {
             mx: 'auto',
           }}
         >
-          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : '#ffffff', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)', boxShadow: '0 15px 35px rgba(0,0,0,0.2)', p: 0, borderRadius: 3, overflow: 'hidden' }}>
+            <Box sx={{ height: 4, background: theme.palette.primary.main }} />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Contact Information</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -219,26 +267,46 @@ const Contact = ({ data }) => {
                     </Box>
                   ))}
                 </Box>
+                <Typography variant="caption" color="text.secondary">
+                  Avg. response time: under 24 hours
+                </Typography>
               </CardContent>
             </Card>
-          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : '#ffffff', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)', boxShadow: '0 15px 35px rgba(0,0,0,0.2)', p: 0, borderRadius: 3, overflow: 'hidden' }}>
+            <Box sx={{ height: 4, background: '#ffb347' }} />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
-                <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Availability</Typography>
-                <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040', mb: 1 }}>I'm currently available for:</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>• Full-time opportunities</Typography>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>• Freelance projects</Typography>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>• Open source contributions</Typography>
-                  <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>• Technical discussions</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Availability</Typography>
+                <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? '#cccccc' : '#404040' }}>Open to collaborations in:</Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {['Full-time roles', 'Freelance', 'Open source', 'Tech discussions'].map((item) => (
+                    <Chip
+                      key={item}
+                      label={item}
+                      size="small"
+                      sx={{
+                        borderRadius: 999,
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)',
+                        color: theme.palette.mode === 'dark' ? '#fff' : '#1a1a1a',
+                        fontWeight: 600,
+                      }}
+                    />
+                  ))}
                 </Box>
+                <Typography variant="caption" color="text.secondary">
+                  Timezone: IST (GMT+5:30) · Happy to adjust for async work
+                </Typography>
               </CardContent>
             </Card>
-          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.9)' : 'rgba(255,255,255,0.9)', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)', boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(255,255,255,0.05), 0 0 20px rgba(255,255,255,0.1)' : '0 8px 32px rgba(0,0,0,0.1)', backdropFilter: 'blur(10px)', p: 0 }}>
+          <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', background: theme.palette.mode === 'dark' ? 'rgba(26,26,26,0.95)' : '#ffffff', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.08)', boxShadow: '0 15px 35px rgba(0,0,0,0.2)', p: 0, borderRadius: 3, overflow: 'hidden' }}>
+            <Box sx={{ height: 4, background: '#66a6ff' }} />
             <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}>
                 <Typography variant="h6" sx={{ fontWeight: 600, color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a' }}>Social Links</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Prefer async updates? Follow or DM me on these platforms.
+                </Typography>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
                   {socialLinks.map((social, idx) => (
-                    <IconButton key={idx} href={social.href} target="_blank" rel="noopener noreferrer" sx={{ width: 48, height: 48, backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.2)', '&:hover': { backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)', boxShadow: theme.palette.mode === 'dark' ? '0 0 10px rgba(255,255,255,0.2)' : '0 0 10px rgba(0,0,0,0.2)' } }}>{social.icon}</IconButton>
+                    <IconButton key={idx} href={social.href} target="_blank" rel="noopener noreferrer" sx={{ width: 48, height: 48, backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)', color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a', border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.2)', '&:hover': { backgroundColor: theme.palette.primary.main, color: '#000', transform: 'translateY(-2px)' } }}>{social.icon}</IconButton>
                   ))}
                 </Box>
               </CardContent>

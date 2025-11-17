@@ -1,12 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box, Typography, Button, Container, Card, CardContent } from '@mui/material';
+import { Box, Typography, Button, Container, Card, CardContent, Chip, Stack } from '@mui/material';
 import { motion } from 'framer-motion';
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
+import { portfolioData } from '../data';
 
 const Hero = () => {
   const [vantaEffect, setVantaEffect] = useState(null);
   const vantaRef = useRef(null);
+  const summary = portfolioData.about?.intro || '';
+  const heroTags = ['MERN Stack', 'Machine Learning', 'Cybersecurity'];
+  const heroStats = [
+    { label: 'Projects Delivered', value: '8+' },
+    { label: 'Hackathons', value: `${portfolioData.hackathons?.length || 0}` },
+    { label: 'Internships', value: '2' },
+  ];
 
   useEffect(() => {
     const isJsdom = typeof navigator !== 'undefined' && /jsdom/i.test(navigator.userAgent || '');
@@ -52,9 +60,11 @@ const Hero = () => {
         position: 'relative',
         overflow: 'hidden',
         background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
+        pt: { xs: 10, md: 14 },
+        scrollMarginTop: '90px',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" id="home">
         <Card
           component={motion.div}
           initial={{ opacity: 0, y: 50 }}
@@ -76,7 +86,7 @@ const Hero = () => {
           <CardContent sx={{ textAlign: 'center', color: 'white', p: 0 }}>
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
               <img
-                src="/1054.jpg"
+                src="/profile.jpg"
                 alt="Pradeep Selladurai"
                 style={{
                   width: 96,
@@ -146,8 +156,57 @@ const Hero = () => {
                 fontWeight: 400,
               }}
             >
-              Computer Science & Cybersecurity undergrad (graduating 2027) with hands-on experience in Java and full-stack development. Finalist in MSME Ideathon 5.0 with strong foundations in software design, testing, and deployment. Skilled in Google Workspace, Firebase, and ML tools; passionate about building scalable solutions and contributing to collaborative teams.
+              {summary}
             </Typography>
+            <Stack
+              direction="row"
+              spacing={1.5}
+              justifyContent="center"
+              flexWrap="wrap"
+              sx={{ mb: 3 }}
+            >
+              {heroTags.map((tag) => (
+                <Chip
+                  key={tag}
+                  label={tag}
+                  sx={{
+                    color: '#fff',
+                    borderRadius: '999px',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    fontWeight: 600,
+                    letterSpacing: 0.5,
+                  }}
+                />
+              ))}
+            </Stack>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', sm: 'repeat(3, minmax(0, 1fr))' },
+                gap: 1.5,
+                mb: 3,
+              }}
+            >
+              {heroStats.map((stat) => (
+                <Box
+                  key={stat.label}
+                  sx={{
+                    p: 2,
+                    borderRadius: 3,
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                  }}
+                >
+                  <Typography variant="h5" fontWeight={700} sx={{ color: '#fff' }}>
+                    {stat.value}
+                  </Typography>
+                  <Typography variant="caption" sx={{ color: '#ccc', letterSpacing: 0.6 }}>
+                    {stat.label}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
             
             <Box
               component={motion.div}
@@ -161,7 +220,7 @@ const Hero = () => {
                 flexWrap: 'wrap',
               }}
             >
-              <a href="/Pradeep%20Selladurai%20--%20Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <a href="/Pradeep_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                 <Button
                   variant="contained"
                   size="large"
@@ -189,7 +248,7 @@ const Hero = () => {
                   View Resume
                 </Button>
               </a>
-              <a href="/Pradeep%20Selladurai%20--%20Resume.pdf" download style={{ textDecoration: 'none' }}>
+              <a href="/Pradeep_Resume.pdf" download style={{ textDecoration: 'none' }}>
                 <Button
                   variant="outlined"
                   size="large"

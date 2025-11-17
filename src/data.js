@@ -3,7 +3,7 @@ const data = {
   about: {
     name: 'Pradeep S',
     title: 'MERN Stack & Machine Learning Developer',
-    intro: `Computer Science & Cybersecurity undergrad (graduating 2027) with hands-on experience in Java and full-stack development. Finalist in MSME Ideathon 5.0 with strong foundations in software design, testing, and deployment. Skilled in Google Workspace, Firebase, and ML tools; passionate about building scalable solutions and contributing to collaborative teams.`,
+    intro: `Web Developer and Full Stack Engineer skilled in designing, coding, and deploying responsive web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) with strong attention to accuracy and precision. Proficient in front-end and back-end development, RESTful API design, database management, and version control (Git/GitHub). Experienced with authentication systems (JWT) and cloud deployment platforms.`,
     additional: '',
     education: [
       {
@@ -28,15 +28,15 @@ const data = {
     email: 'pradeepnaveen930@gmail.com',
   },
   resume: {
-    viewUrl: '/Pradeep%20Selladurai%20--%20Resume.pdf',
-    downloadUrl: '/Pradeep%20Selladurai%20--%20Resume.pdf',
+    viewUrl: '/Pradeep_Resume.pdf',
+    downloadUrl: '/Pradeep_Resume.pdf',
     lastUpdated: 'January 2025',
   },
   skills: {
-    languages: ['Java', 'Python', 'JavaScript', 'TypeScript', 'C', 'SQL'],
-    frontend: ['React.js', 'Material UI', 'Tailwind CSS', 'HTML5', 'CSS3'],
-    backend: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication', 'Firebase Functions'],
-    ml: ['TensorFlow', 'Keras', 'scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'OpenCV'],
+    languages: ['Java', 'JavaScript', 'C', 'SQL'],
+    frontend: ['React.js', 'Material UI', 'Tailwind CSS', 'Bootstrap', 'HTML5', 'CSS3'],
+    backend: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication', 'Firebase Functions', 'Microsoft SQL Server'],
+    ml: ['scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
     tools: ['Git', 'GitHub', 'VS Code', 'Postman', 'Jupyter Notebook', 'Google Colab', 'Notion'],
     deployment: ['Netlify', 'Vercel', 'Firebase', 'Render'],
     databases: ['MongoDB', 'MySQL Server'],
@@ -104,6 +104,10 @@ const data = {
       technologies: ['Python', 'DistilBERT', 'Hugging Face', 'React.js', 'Node.js', 'Express.js'],
       githubUrl: 'https://github.com/Cyberpradeep/TalkToMachine.git',
       liveUrl: '',
+      impact: [
+        'Demoed live for MSME Ideathon 5.0 national finals.',
+        'Helped the team answer vernacular queries during jury Q&A.',
+      ],
     },
     {
       title: 'Gemini-Powered AI Code Reviewer',
@@ -111,6 +115,10 @@ const data = {
       technologies: ['React.js', 'TypeScript', 'Tailwind CSS', 'Google Gemini API', 'Vercel'],
       githubUrl: 'https://github.com/Cyberpradeep/Gemini-AI_Code_Reviewer',
       liveUrl: 'https://www.aicodereviewer.dev',
+      impact: [
+        'Used to review classmates’ mini-projects before demo days.',
+        'Surfaced common lint issues so teams could ship faster.',
+      ],
     },
     {
       title: 'Canteen Preorder App (MERN Stack)',
@@ -118,6 +126,10 @@ const data = {
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Material UI', 'JWT Authentication', 'REST APIs'],
       githubUrl: 'https://github.com/Cyberpradeep/canteen_preorder_app.git',
       liveUrl: '',
+      impact: [
+        'Pilot-tested during lunch hours for one campus kiosk.',
+        'Kept preorder queue organized for volunteers on duty.',
+      ],
     },
     {
       title: 'Loan Eligibility Predictor',
@@ -125,6 +137,10 @@ const data = {
       technologies: ['Python', 'scikit-learn', 'Pandas', 'Streamlit', 'Data Visualization'],
       githubUrl: 'https://github.com/Cyberpradeep/loan-eligibility-predictor.git',
       liveUrl: 'https://huggingface.co/spaces/Prap017/loan_eligibility_predictor',
+      impact: [
+        'Used in peer workshops to explain credit features.',
+        'Helped classmates compare approval scenarios in minutes.',
+      ],
     },
     {
       title: 'Spam Email Detection (Machine Learning)',
@@ -132,6 +148,10 @@ const data = {
       technologies: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'NLTK', 'Jupyter Notebook'],
       githubUrl: 'https://github.com/Cyberpradeep/Email_Spam_checker.git',
       liveUrl: 'https://huggingface.co/spaces/Prap017/Email_Spam_Detection',
+      impact: [
+        'Flagged phishing templates shared during cybersecurity bootcamps.',
+        'Helped teammates label internal practice datasets faster.',
+      ],
     },
     {
       title: 'Handwritten Digit Recognition',
@@ -139,6 +159,10 @@ const data = {
       technologies: ['Python', 'TensorFlow', 'Keras', 'NumPy', 'MNIST', 'Deep Learning'],
       githubUrl: 'https://github.com/Cyberpradeep/Handwritten_Digit_Finder',
       liveUrl: 'https://huggingface.co/spaces/Prap017/Handwrieen_recogination',
+      impact: [
+        'Demoed during ML club sessions to introduce CNN workflows.',
+        'Provided an interactive tool for juniors to test digit samples.',
+      ],
     },
     {
       title: 'College Fund Management System',
@@ -146,6 +170,10 @@ const data = {
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Bootstrap', 'JWT', 'Role-Based Authorization'],
       githubUrl: 'https://github.com/Cyberpradeep/college-fund-management',
       liveUrl: '',
+      impact: [
+        'Centralized approvals for three student clubs during trials.',
+        'Reduced manual spreadsheet updates for coordinators.',
+      ],
     },
     {
       title: 'Final Project – Garbage Collection',
@@ -153,6 +181,10 @@ const data = {
       technologies: ['IoT', 'Machine Learning', 'Python', 'Sensors', 'Data Analytics'],
       githubUrl: 'https://github.com/Cyberpradeep/Final_Project',
       liveUrl: '',
+      impact: [
+        'Used in lab demos to show fill-level alerts on a dashboard.',
+        'Helped project team simulate optimized pickup routes for review.',
+      ],
     },
   ],
   certifications: [
@@ -162,6 +194,23 @@ const data = {
       date: '2024',
       description: 'Earners of the Azure AI Fundamentals certification have demonstrated foundational knowledge of machine learning (ML) and artificial intelligence (AI) concepts and related Microsoft Azure services.',
       link: 'https://learn.microsoft.com/api/credentials/share/en-us/PRADEEPS-7652/8B547C692765F791?sharingId=FB2098054B69487C',
+      skills: ['Azure AI services', 'ML concepts', 'Responsible AI'],
+    },
+    {
+      title: 'GitHub Foundation Certification',
+      issuer: 'GitHub',
+      date: '2025',
+      description: 'Validated foundational knowledge of GitHub, including repositories, branches, pull requests, issues, and basic collaboration workflows.',
+      link: 'https://learn.microsoft.com/api/credentials/share/en-us/PRADEEPS-7652/CED12C74C0ED82A7?sharingId=FB2098054B69487C',
+      skills: ['Repositories', 'Pull requests', 'Issue tracking'],
+    },
+    {
+      title: 'Distributed Systems',
+      issuer: 'NPTEL',
+      date: '2024',
+      description: 'Completed the NPTEL Distributed Systems course covering consensus, replication, fault tolerance, and large-scale system coordination.',
+      link: '',
+      skills: ['Consensus', 'Fault tolerance', 'Scalability'],
     },
   ],
 };

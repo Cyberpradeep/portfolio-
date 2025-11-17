@@ -114,22 +114,21 @@ const Navbar = () => {
         <AppBar
           position="fixed"
           sx={{
+            top: 16,
+            left: { xs: 16, md: '50%' },
+            transform: { xs: 'none', md: 'translateX(-50%)' },
+            width: { xs: 'calc(100% - 32px)', md: 'min(1100px, calc(100% - 64px))' },
+            borderRadius: 999,
             background: scrolled
-              ? isDark
-                ? 'rgba(0, 0, 0, 0.95)'
-                : 'rgba(255, 255, 255, 0.95)'
-              : isDark
-              ? 'rgba(0, 0, 0, 0.8)'
-              : 'rgba(255, 255, 255, 0.8)',
-            backdropFilter: 'blur(20px)',
-            borderBottom: `1px solid ${theme.palette.divider}`,
+              ? 'rgba(15, 15, 15, 0.92)'
+              : 'linear-gradient(135deg, rgba(0,0,0,0.8), rgba(30,30,30,0.85))',
+            backdropFilter: 'blur(25px)',
+            border: '1px solid rgba(255,255,255,0.12)',
             boxShadow: scrolled
-              ? isDark
-                ? '0 4px 30px rgba(255, 215, 0, 0.15)'
-                : '0 4px 30px rgba(0, 0, 0, 0.1)'
-              : 'none',
+              ? '0 12px 45px rgba(0,0,0,0.45)'
+              : '0 8px 25px rgba(0,0,0,0.25)',
             transition: 'all 0.3s ease',
-            zIndex: theme.zIndex.drawer + 1,
+            zIndex: theme.zIndex.drawer + 2,
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between', px: { xs: 2, md: 4 } }}>
@@ -161,7 +160,7 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             {!isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                {navItems.map((item) => (
+                {navItems.map((item, idx) => (
                   <Button
                     key={item.name}
                     component={Link}
@@ -172,21 +171,24 @@ const Navbar = () => {
                     duration={500}
                     sx={{
                       color: theme.palette.text.primary,
-                      fontWeight: 500,
+                      fontWeight: 600,
+                      textTransform: 'none',
+                      px: 2.5,
                       position: 'relative',
                       '&::after': {
                         content: '""',
                         position: 'absolute',
-                        bottom: 0,
+                        bottom: -6,
                         left: '50%',
                         width: 0,
-                        height: '2px',
+                        height: '3px',
+                        borderRadius: 999,
                         background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                         transition: 'all 0.3s ease',
                         transform: 'translateX(-50%)',
                       },
                       '&:hover::after': {
-                        width: '100%',
+                        width: '70%',
                       },
                       '&:hover': {
                         color: theme.palette.primary.main,
@@ -194,6 +196,9 @@ const Navbar = () => {
                       },
                     }}
                   >
+                    <Box component="span" sx={{ mr: 1, fontSize: '0.85rem', opacity: 0.6 }}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </Box>
                     {item.name}
                   </Button>
                 ))}
@@ -201,7 +206,7 @@ const Navbar = () => {
             )}
 
             {/* Theme Toggle & Mobile Menu */}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               <IconButton
                 onClick={toggleTheme}
                 color="primary"
